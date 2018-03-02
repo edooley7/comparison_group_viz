@@ -53,7 +53,7 @@ function drawCanvas() {
 
 function make_base(left_position, right_position, width, height) {
   base_image = new Image();
-  base_image.src = 'school_image_no_background.png';
+  base_image.src = 'img/school_image_no_background.png';
   base_image.onload = function(){
     // left, top, width, height
     context.drawImage(base_image, left_position, right_position, width, height);

@@ -164,16 +164,15 @@ school_3_data['ending_x_position'] = school_3_data.starting_x_position
 school_3_data.loc[school_3_data.color == target_color, 'ending_x_position'] = school_3_data.starting_x_position + size_of_plot + space_between_areas
 school_3_data['ending_y_position'] = school_3_data.starting_y_position
 
-
-# <codecell>
-
-other_school_data.to_csv('data/other_school_data.csv', index = False)
-
 # <codecell>
 
 new_positions = range(0, len(other_school_data[other_school_data.color == target_color])*10, 10)
 new_positions = [x + (random.randrange(-1000,1000,1)/10) for x in new_positions]
+
 other_school_data = pd.concat([school_1_data, school_2_data, school_3_data])
+other_school_data.loc[other_school_data.color == target_color, 'ending_y_position'] = [random.randint(0,350) for x in range(len(new_positions))]
+other_school_data.to_csv('data/other_school_data.csv', index = False)
+
 other_school_data['line_x_position'] = other_school_data.ending_x_position
 other_school_data.loc[other_school_data.color == target_color, 'line_x_position'] = new_positions
 other_school_data['line_y_position'] = other_school_data.ending_y_position

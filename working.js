@@ -51,9 +51,18 @@ function drawCanvas() {
   })
 }
 
-make_base();
+function make_base(left_position, right_position, width, height) {
+  base_image = new Image();
+  base_image.src = 'school_image_no_background.png';
+  base_image.onload = function(){
+    // left, top, width, height
+    context.drawImage(base_image, left_position, right_position, width, height);
+  }
+}
 
-d3.csv("data/other_school_line_data.csv", function(error, dataset) { create_points(dataset) });
+make_base(-50, 120, 200, 300);
+
+d3.csv("data/other_school_line.csv", function(error, dataset) { create_points(dataset) });
 
 
 
